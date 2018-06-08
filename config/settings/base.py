@@ -39,7 +39,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/dev/ref/settings/#databases
 
 DATABASES = {
-    'default': env.db('DATABASE_URL', default='postgres:///backenddjangoproject'),
+    'default': env.db('DATABASE_URL', default='postgres:///nagdbtest'),
 }
 DATABASES['default']['ATOMIC_REQUESTS'] = True
 
@@ -253,3 +253,13 @@ SOCIALACCOUNT_ADAPTER = 'backenddjangoproject.users.adapters.SocialAccountAdapte
 
 # Your stuff...
 # ------------------------------------------------------------------------------
+REST_FRAMEWORK = {
+    'DEFAULT_PERMISSION_CLASSES': (
+        'rest_framework.permissions.IsAuthenticated',
+    ),
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework_jwt.authentication.JSONWebTokenAuthentication',
+        'rest_framework.authentication.SessionAuthentication',
+        'rest_framework.authentication.BasicAuthentication',
+    ),
+}

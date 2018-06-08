@@ -9,6 +9,8 @@ class User(AbstractUser):
     # First Name and Last Name do not cover name patterns
     # around the globe.
     name = models.CharField(_("Name of User"), blank=True, max_length=255)
+    email = models.CharField(max_length=255)
+    mobile_no = models.CharField(max_length=15)
 
     def __str__(self):
         return self.username
